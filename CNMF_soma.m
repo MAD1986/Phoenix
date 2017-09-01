@@ -48,7 +48,7 @@ imagesc((Cn_max)/max(max((Cn_max))).*nansum(ROI,3));
 %end
 
 %% update temporal components
-P.p = 2;    % set AR to 2
+P.p = 0;    % set AR to 2
 [C,f,P,S,YrA] = update_temporal_components(Yr,A,b,Cin,fin,P,options);
 %% Plot uptdaded ROI
 %plot_contours(A,Cn_max,options,1);

@@ -59,7 +59,7 @@ plot_component(1)
   %      end
         subplot(2,2,[2,4]);
    %     if i <= K
-            plot(Df(:,i),'linewidth',2); hold all; plot(Df(:,i),'linewidth',2);
+            plot(Df(:,i),'linewidth',2); hold all;
              title(sprintf('Component %i (calcium DF/F value)',i),'fontsize',16,'fontweight','bold');
             drawnow;
             hold off;

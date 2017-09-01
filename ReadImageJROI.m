@@ -198,8 +198,8 @@ if (isequal(lower(strExt), '.zip'))
    cvsROIs = ReadImageJROI(cstrFilenames);
    
    % - Clean up temporary directory
-   delete([strROIDir filesep '*.roi']);
-   rmdir(strROIDir);
+ %  delete([strROIDir filesep '*.roi']);
+%   rmdir(strROIDir);
    
    % - Return ROIs
    sROI = cvsROIs;   

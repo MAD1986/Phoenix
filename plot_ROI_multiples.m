@@ -22,7 +22,7 @@ Cn_max = read_file(tif_file);
 end
 %% Options
 % Plot only keep ROI:
-plot_keep=1; % 0 or 1
+plot_keep=0; % 0 or 1
 plot_fr=10;
 %% plot
 FOV=length(ROI{1}.Cn_max);
@@ -62,29 +62,11 @@ end
 
 
 
-%% To try 
-% To get the coordinates of dendrite ROIs
+%% Show components on image + dF for all sessions
 %set color of contour for sessions
-color=[{'g'} {'r'} {'w'}];
+%all colors : https://www.mathworks.com/help/matlab/ref/colorspec.html
+color=[{'g'} {'m'} {'b'} {'y'}];
+coordinates_GUI(ROI,C_df, ROI_sh,color);
 
-for i=1:length(ROI)
-Cn_all(:,:,i)=ROI{i}.Cn_max;
-Cn_mean=mean(Cn_all,3);
-leg{i}=['session ' num2str(i)];
-end
-figure
- imshow(Cn_mean);
-      hold on;     
-for i=1:length(ROI)
-ROI_temp=ROI_sh{i};
-for r=1:size(ROI_temp,3)
- %visboundaries(ROI(:,:,r))
-[B{r},L{r}] = bwboundaries(ROI_temp(:,:,r));
-for k = 1:length(B{r})
-   boundary = B{r}{k};
-   plot(boundary(:,2), boundary(:,1), color{i}, 'LineWidth', 1)
-coodonates{r}=B{r}{1};
 
-end
-end
-end 
+

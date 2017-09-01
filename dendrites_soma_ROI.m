@@ -9,24 +9,24 @@ nam = '/Users/martial/Documents/test/1_M991_CTRL_MC.tif'; %Images to open
 FOV = [512,512]; % Image resolution 
 d1=FOV(1);
 d2=FOV(2);
-dend='/Users/martial/Desktop/PSAM_ROI/M991/soma&dendrites/1_2_dendrites.zip'; %path to ROI file (.zip)
-%soma='/Users/martial/Desktop/PSAM_ROI/M991/soma_10micron_polygon.zip'; %path to ROI file (.zip)
-[~,ROI_dend] = ReadImageJROI(dend,[d1,d2]);
+%dend='/Users/martial/Desktop/PSAM_ROI/M991/soma&dendrites/1_2_dendrites.zip'; %path to ROI file (.zip)
+soma='/Users/martial/Desktop/ROI/M3/soma_dendrites/M3_FOV2_5_MIS1_S.zip'; %path to ROI file (.zip)
+%[~,ROI_dend] = ReadImageJROI(dend,[d1,d2]);
 [~,ROI_soma] = ReadImageJROI(soma,[d1,d2]);
 %Open image
 sframe=1;	% first frame to read (start of the session)
-num2read=1000;	% how many frames to read   (lenght of the session)
+num2read=5000;	% how many frames to read   (lenght of the session)
 Y = bigread2(nam,sframe,num2read);
 %Y = bigread2(nam);
-Y = Y - min(Y(:)); 
+%Y = Y - min(Y(:)); 
 if ~isa(Y,'double');    Y = double(Y);  end         % convert to double
 [d1,d2,T] = size(Y);                                % dimensions of dataset
 d = d1*d2;  
 %% Save structures
 input.name=nam;
-input.dend=dend;
+i%nput.dend=dend;
 input.soma=soma;
-input.ROI_dend=ROI_dend;
+%input.ROI_dend=ROI_dend;
 input.ROI_soma=ROI_soma;
 %% Data pre-processing
 [P,Y] = preprocess_data(Y,0); %set at 0 for dendrites
